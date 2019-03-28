@@ -1,0 +1,21 @@
+{
+  "name": "stop-note-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "concat-stream": "^2.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.3-alpha.2",
+    "file-system": "^2.2.2",
+    "nodemon": "^1.18.10"
+  }
+}
