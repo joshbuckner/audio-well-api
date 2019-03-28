@@ -65,7 +65,7 @@ const db = {
 				}
 			]
 		}
-	]
+	],
 	// login: [
 	// 	{
 	// 		id: '987',
@@ -73,6 +73,7 @@ const db = {
 	// 		email: 'john@gmail.com'
 	// 	}
 	// ]
+	songs: []
 }
 
 // bcrypt.hash("bacon", null, null, function(err, hash) {
@@ -110,6 +111,16 @@ app.post('/register', (req, res) => {
 		songs: []
 	});
 	res.json(db.users[db.users.length-1]);
+});
+
+app.post('/addsong', (req, res) => {
+	db.songs.push({
+		id: '1',
+		name: 'test song name',
+		path: `${__dirname}/public/files/${req.body.name}`
+	})
+	console.log(db.songs);
+	res.status(200).json('song successfully added');
 });
 
 app.get('/profile/:id', (req, res) => {
