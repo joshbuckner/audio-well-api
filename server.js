@@ -22,22 +22,22 @@ const db = {
 			password: 'cookies',
 			joined: new Date(),
 			songs: [
-				{
-					id: '1',
-					name: 'the true blue - 95',
-					notes: [
-						{
-							title: 'start',
-							body: 'add new intro',
-							time: '0:00',
-						}
-					],
-					members: [
-						{
-							email: 'kate@gmail.com'
-						}
-					]
-				}
+				// {
+				// 	id: '1',
+				// 	name: 'the true blue - 95',
+				// 	notes: [
+				// 		{
+				// 			title: 'start',
+				// 			body: 'add new intro',
+				// 			time: '0:00',
+				// 		}
+				// 	],
+				// 	members: [
+				// 		{
+				// 			email: 'kate@gmail.com'
+				// 		}
+				// 	]
+				// }
 			]
 		},
 		{
@@ -114,13 +114,43 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/addsong', (req, res) => {
-	db.songs.push({
-		id: '1',
-		name: 'test song name',
-		path: `${__dirname}/public/files/${req.body.name}`
-	})
-	console.log(db.songs);
-	res.status(200).json('song successfully added');
+	for (let i = 0; i < db.users.length; i++) {
+		if (db.users[i].email === req.body.user) {
+			db.users[i].songs.push({
+				id: '1',
+				name: req.body.name,
+				path: `${__dirname}/public/files/${req.body.name}`,
+				owner: req.body.user,
+				notes: [
+					{
+						title: 'start',
+						color: 'oxford-blue',
+						time: '0:00',
+					}
+				]
+			});
+			// console.log(db.users[i].songs)
+			res.status(200).json(db.users[i]);
+		}
+	}
+});
+
+app.post('/addnote', (req, res) => {
+	for (let i = 0; i < db.users.length; i++) {
+		if (db.users[i].email === req.body.user) {
+			for (let z = 0; z < db.users[i].songs.length; z++) {
+				if (db.users[i].songs[z].name === req.body.song) {
+					db.users[i].songs[z].notes.push({
+		      	title: req.body.note.title, 
+		      	time: req.body.note.time, 
+		      	color: req.body.note.color
+					});
+					console.log(db.users[i].songs)
+					res.status(200).json(db.users[i]);
+				}
+			}
+		}
+	}
 });
 
 app.get('/profile/:id', (req, res) => {
