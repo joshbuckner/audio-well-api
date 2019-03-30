@@ -93,11 +93,12 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signin', (req, res) => {
-	if (req.body.email === db.users[0].email && req.body.password === db.users[0].password) {
-		res.json(db.users[0]);
-	} else {
-		res.status(400).json('error logging in');
+	for (let i=0; i < db.users.length; i++) {
+		if (req.body.email === db.users[i].email && req.body.password === db.users[i].password) {
+			return res.json(db.users[i]);
+		}
 	}
+	res.status(400).json('error logging in');
 });
 
 app.post('/register', (req, res) => {
