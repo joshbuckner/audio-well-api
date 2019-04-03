@@ -21,24 +21,7 @@ const db = {
 			email: 'john@gmail.com',
 			password: 'cookies',
 			joined: new Date(),
-			songs: [
-				// {
-				// 	id: '1',
-				// 	name: 'the true blue - 95',
-				// 	notes: [
-				// 		{
-				// 			title: 'start',
-				// 			body: 'add new intro',
-				// 			time: '0:00',
-				// 		}
-				// 	],
-				// 	members: [
-				// 		{
-				// 			email: 'kate@gmail.com'
-				// 		}
-				// 	]
-				// }
-			]
+			songs: []
 		},
 		{
 			id: '2',
@@ -46,47 +29,10 @@ const db = {
 			email: 'kate@gmail.com',
 			password: 'dogs',
 			joined: new Date(),
-			songs: [
-				{
-					id: '1',
-					name: 'the true blue - 95',
-					notes: [
-						{
-							title: 'start',
-							body: 'add new intro',
-							time: '0:00',
-						}
-					],
-					members: [
-						{
-							email: 'john@gmail.com'
-						}
-					]
-				}
-			]
+			songs: []
 		}
-	],
-	// login: [
-	// 	{
-	// 		id: '987',
-	// 		hash: '',
-	// 		email: 'john@gmail.com'
-	// 	}
-	// ]
-	songs: []
+	]
 }
-
-// bcrypt.hash("bacon", null, null, function(err, hash) {
-//     // Store hash in your password DB.
-// });
-
-// // Load hash from your password DB.
-// bcrypt.compare("bacon", hash, function(err, res) {
-//     // res == true
-// });
-// bcrypt.compare("veggies", hash, function(err, res) {
-//     // res = false
-// });
 
 app.get('/', (req, res) => {
 	res.send(db.users);
