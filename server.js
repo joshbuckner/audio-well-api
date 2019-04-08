@@ -71,7 +71,7 @@ app.post('/addsong', (req, res) => {
 				notes: [
 					{
 						title: 'start',
-						color: 'oxford-blue',
+						color: 'vivid-tangerine',
 						time: '0:00',
 					}
 				]
