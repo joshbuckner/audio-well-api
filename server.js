@@ -117,7 +117,7 @@ app.get('/profile/:id', (req, res) => {
 app.post('/upload', (req, res) => {
 	const uploadFile = req.files.file;
 	const fileName = req.files.file.name;
-	const filePath = `${__dirname}/public/files/${fileName}`;
+	const filePath = `./public/files/${fileName}`;
 	uploadFile.mv(filePath,
 		function (err) {
 			if (err) {
@@ -126,7 +126,7 @@ app.post('/upload', (req, res) => {
 			// res.json({
 			// 	file: `public/${req.files.file.name}`
 			// });
-			res.send(`${__dirname}/public/files/${fileName}`);
+			res.send(`./public/files/${fileName}`);
 		}
 	);
 
