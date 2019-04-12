@@ -115,6 +115,9 @@ app.get('/profile/:id', (req, res) => {
 });
 
 app.post('/upload', (req, res) => {
+	fs.mkdir('/public/files', { recursive: true }, (err) => {
+	  if (err) throw err;
+	});
 	const uploadFile = req.files.file;
 	const fileName = req.files.file.name;
 	const filePath = `${__dirname}/public/files/${fileName}`;
